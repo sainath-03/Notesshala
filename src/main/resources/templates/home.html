@@ -1,0 +1,36 @@
+  <!DOCTYPE html>
+  <html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Notesshala - Home</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+<!--    <link rel="stylesheet" th:href="@{/main.css}"/>-->
+  </head>
+  <body>
+
+  <!-- Header/Nav -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" th:href="@{/}">Notesshala</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
+          <li class="nav-item"><a class="nav-link" th:href="@{/notes/upload}">Upload Notes</a></li>
+          <li class="nav-item"><a class="nav-link" th:href="@{/notes}">View</a></li>
+          <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="text-center py-5">
+    <h1>Welcome <span th:text="${#authentication.name}">User</span></h1>
+    <p class="lead">Share and browse notes seamlessly.</p>
+  </section>
+
+  <script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+
+  </body>
+  </html>
