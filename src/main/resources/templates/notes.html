@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notesshala - Your Notes</title>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+<!--  <link rel="stylesheet" th:href="@{/main.css}"/>-->
+</head>
+<body>
+
+<!-- Header/Nav -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" th:href="@{/}">Notesshala</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navBar" aria-controls="navBar" aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navBar">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
+        <li class="nav-item"><a class="nav-link" th:href="@{/notes/upload}">Upload Notes</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page"
+                                th:href="@{/notes}">View Notes</a></li>
+        <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Notes Table -->
+<section class="container py-5">
+  <h4 class="mb-4">Your Uploaded Notes</h4>
+
+  <div th:if="${notes.empty}" class="alert alert-info">
+    You have not uploaded any notes yet.
+  </div>
+
+  <div th:if="${!notes.empty}">
+    <table class="table table-hover">
+      <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Branch</th>
+        <th>About</th>
+        <th>File</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="note : ${notes}">
+        <td th:text="${note.id}">1</td>
+        <td th:text="${note.branch}">CSE</td>
+        <td th:text="${note.about}">Data Structures</td>
+        <td>
+          <a th:href="@{'/files/' + ${note.filename}}"
+             th:text="${note.filename}">file.pdf</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
